@@ -15,23 +15,16 @@ public class StarGame extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
-		region = new TextureRegion(img, 20, 25, 100, 100);
+		img = new Texture("nature.jpg");
+		//region = new TextureRegion(img, 20, 25, 100, 100);
 	}
 
 	@Override
 	public void render () {
 		ScreenUtils.clear(0.5f, 0.23f,0.74f, 1);
 		batch.begin();
-		batch.setColor(1, 1, 1, 0.5f);
-		batch.draw(img, x, y, 200, 200);
-		batch.setColor(1, 1, 1, 1f);
-		batch.draw(region, 300, 300);
-		batch.setColor(1, 1, 1, 0.5f);
-		batch.draw(region, 200, 200);
+		batch.draw(img, 0,0);
 		batch.end();
-		x++;
-		y++;
 	}
 	
 	@Override
