@@ -7,8 +7,12 @@ import com.badlogic.gdx.math.Vector2;
 import gb.ru.base.BaseScreen;
 
 public class MenuScreen extends BaseScreen {
+
+    private static final float V_LEN = 1.5f;
+
     private Texture img;
     private Vector2 touch;
+    private Vector2 pos;
     private Vector2 v;
 
     @Override
@@ -16,16 +20,21 @@ public class MenuScreen extends BaseScreen {
         super.show();
         img = new Texture("badlogic.jpg");
         touch = new Vector2();
-        v = new Vector2(1, 1);
+        pos = new Vector2();
+        v = new Vector2();
     }
 
     @Override
     public void render(float delta) {
         super.render(delta);
         batch.begin();
-        batch.draw(img, touch.x, touch.y);
+        batch.draw(img, pos.x, pos.y);
         batch.end();
-        touch.add(v);
+        if(pos.dst(touch) <= v.len()){
+            pos.set(touch);
+        } else {
+            pos.add(v);
+        }
     }
 
     @Override
@@ -37,6 +46,7 @@ public class MenuScreen extends BaseScreen {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         touch.set(screenX, Gdx.graphics.getHeight() - screenY);
+        v.set(touch.cpy().sub(pos)).setLength2(V_LEN);
         return super.touchDown(screenX, screenY, pointer, button);
     }
 }
