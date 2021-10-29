@@ -9,6 +9,7 @@ import gb.ru.base.BaseScreen;
 import gb.ru.math.Rect;
 import gb.ru.sprite.Background;
 import gb.ru.sprite.ExitButton;
+import gb.ru.sprite.MainShip;
 import gb.ru.sprite.PlayButton;
 import gb.ru.sprite.Star;
 
@@ -24,6 +25,7 @@ public class MenuScreen extends BaseScreen {
 
     private Background background;
     private Star stars[];
+
 
     private ExitButton exitButton;
     private PlayButton playButton;
@@ -42,6 +44,7 @@ public class MenuScreen extends BaseScreen {
         for (int i = 0; i < stars.length; i++){
             stars[i] = new Star(atlas);
         }
+
         exitButton = new ExitButton(atlas);
         playButton = new PlayButton(atlas, game);
 
@@ -54,6 +57,7 @@ public class MenuScreen extends BaseScreen {
         for(Star star: stars){
             star.resize(worldBounds);
         }
+
         exitButton.resize(worldBounds);
         playButton.resize(worldBounds);
     }
@@ -100,8 +104,10 @@ public class MenuScreen extends BaseScreen {
         for(Star star: stars){
             star.draw(batch);
         }
+
         exitButton.draw(batch);
         playButton.draw(batch);
+
         batch.end();
     }
 
