@@ -14,7 +14,7 @@ import gb.ru.sprite.PlayButton;
 import gb.ru.sprite.Star;
 
 public class MenuScreen extends BaseScreen {
-
+///
     private final Game game;
 
     private static final int STAR_COUNT = 256;
