@@ -1,5 +1,6 @@
 package gb.ru.base;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -29,6 +30,9 @@ public class Sprite extends Rect {
 
     public Sprite(TextureRegion region, int rows, int cols, int frames){
         this.regions = Regions.split(region, rows, cols, frames);
+        for(TextureRegion item : regions){
+            item.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        }
     }
 
     public void setHeightProportion(float height){
